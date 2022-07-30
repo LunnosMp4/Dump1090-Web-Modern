@@ -11,4 +11,4 @@ I use this version of dump1090 because I don't want to use piaware and I also do
 This project is currently being developed and many things can be changed, if you have any ideas for additions do not hesitate to contact me !
 This website therefore aims to be very simple to set up and allow as many people as possible to benefit from a web version in tune with the times and which does not look like a good old windows 98.
 
-Do not hesitate to put a star if you like the project !
+**Do not hesitate to put a star if you like the project !**
