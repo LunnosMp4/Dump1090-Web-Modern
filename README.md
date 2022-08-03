@@ -38,7 +38,13 @@ If it does not work, you can try to install the following extension on your brow
 
 ## Sources
 
+### Database
+
+You can use the database provided in the folder `databate` of the repository.
+This database lists any information on aircraft from their ICAO code (Hex) (register, type, model, manufacturer ...) and date of 2018.
+Personally I use another update database daily that I connected to my own API, but I cannot share it publicly, I let you do research on this last!
+
 Sun, J. (2017). World Aircraft Database.
-Retrieved from http://junzis.com/adb/data 
+Retrieved from http://junzis.com/adb/
 
 **Do not hesitate to put a star if you like the project !**

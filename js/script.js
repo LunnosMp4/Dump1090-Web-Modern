@@ -54,10 +54,11 @@ let getNewData = (cb) => {
 // Get Data from the Database
 function loadDatabase() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "database/aircraftRegistration.json", false);
+    xhr.open("GET", "database/database.json", false);
     xhr.send();
     var json = xhr.responseText;
-    database = JSON.parse(json);
+    database = JSON.parse(json).results;
+    console.log(database);
     return database;
 }
 
@@ -155,9 +156,10 @@ let updateMap = (database) => {
                 if (newPlane.created === undefined) {
                     for (var i = 0; i < database.length; i++) {
                         if (database[i].icao === newPlane.hex) {
-                            newPlane.regid = database[i].regid.toUpperCase();
-                            newPlane.shortName = database[i].mdl.toUpperCase();
-                            newPlane.longName = database[i].type;
+                            console.log(database[i]);
+                            newPlane.regid = database[i].regid;
+                            newPlane.shortName = database[i].nameShort;
+                            newPlane.longName = database[i].nameLong;
                             newPlane.operator = database[i].operator;
                             newPlane.created = true;
                         }
