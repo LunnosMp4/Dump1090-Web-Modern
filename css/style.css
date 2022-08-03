@@ -6,25 +6,55 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-body {
+* {
     font-family: "Poppins", sans-serif;
+    font-weight: 250;
+}
+
+body {
     color: #fff;
     font-size: 14px;
     line-height: 1.5em;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+}
+
+ul {
+    list-style-type: none;
+}
+
+::selection {
+    color: #10121b;
+    background: #f9fafbdd;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #10121b66;
+}
+::-webkit-scrollbar-thumb {
+    background: #f9fafbae;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #f9fafb75;
 }
 
 #map {
     position: absolute;
     height: 100vh;
     width: 100vw;
+    top: 0;
 }
 
 /*********** OpenStreetMap Custom ***************/
 
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
     border: none;
+    user-select: none
 }
 
 .leaflet-touch .leaflet-bar a:first-child {
@@ -73,16 +103,59 @@ a.leaflet-control-zoom-out {
     position: relative;
     width: 250px;
     height: 500px;
-    z-index: 401;
+    z-index: 402;
     background-color: #10121b66;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-    .container h2 {
-        text-align: center;
-        border-bottom: 1px solid #a0a4b184;;
+    .container p {
+        text-align: left;
+        padding-left: 10px;
+        margin-bottom: 5px;
     }
+
+    .container desc {
+        text-align: left;
+        margin-left: 30px;
+    }
+
+.title {
+    position: absolute;
+    width: 250px;
+    height : 50px;
+    border-bottom: 2px solid #a0a4b184;;
+    z-index: 401;
+    backdrop-filter: blur(20px);
+    text-align: center;
+    background-color: #10121b66;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#link {
+    position: absolute;
+    height: 13px;
+    width: 1px;
+    left: 12px;
+    background-color: #f9fafbdd;
+}
+
+#link::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 10px;
+    left: 0px;
+    bottom: 0px;
+    background-color: #f9fafbdd;
+}
+
+#PlaneList li {
+    margin-left: -10px;
+}
+
 
 
 /****************** Plane Icon ******************/
@@ -123,9 +196,21 @@ a.leaflet-control-zoom-out {
 
 /************************************************/
 
-.full-info {
+.left-info {
     border-radius: 0 20px 20px 0;
     top: 100px;
     right: 0px;
     display: none;
+}
+
+.right-title {
+    border-radius: 20px 0 0 0px;
+    top: 100px;
+    left: calc(100% - 250px);   
+}
+
+.right-info {
+    top: 152px;
+    left: calc(100% - 250px);   
+    border-radius: 0 0 0 20px;
 }
