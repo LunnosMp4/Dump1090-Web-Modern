@@ -22,7 +22,7 @@ This is surely due to the following error:
 Access-Control-Allow-Origin' header is present on the requested resource.
 ```
 
-In order to adjust this error you must go to the restitory [tar1090] (https://github.com/wiedehopf/tar1090) and modify the file `88-tar1090.conf` and add the following line:
+In order to adjust this error you must go to the repository [tar1090] (https://github.com/wiedehopf/tar1090) and modify the file `88-tar1090.conf` and add the following line:
 
 ```conf
 $HTTP["url"] =~ "^/INSTANCE/data/aircraft\.json$" {
@@ -33,12 +33,12 @@ $HTTP["url"] =~ "^/INSTANCE/data/aircraft\.json$" {
 }
 ```
 
-Si toute fois cela ne fonctionne pas, vous pouvez essayez d'installer l'extension suivante sur votre navigateur :
+If it does not work, you can try to install the following extension on your browser :
 [Moesif Origin & CORS Changer](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc)
 
 ## Sources
 
-Sun, J. (2017). World Aircraft Database. 
+Sun, J. (2017). World Aircraft Database.
 Retrieved from http://junzis.com/adb/data 
 
 **Do not hesitate to put a star if you like the project !**
