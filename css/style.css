@@ -196,11 +196,32 @@ a.leaflet-control-zoom-out {
 
 /************************************************/
 
-.left-info {
-    border-radius: 0 20px 20px 0;
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #10121b66;
+}
+::-webkit-scrollbar-thumb {
+    background: #f9fafbae;
+}
+
+.left-title {
+    border-radius:  0 20px 0 0;
     top: 100px;
-    right: 0px;
-    display: none;
+    left: 0px;   
+}
+
+.left-info {
+    position: absolute;
+    border-radius: 0 0 20px 0;
+    top: 152px;
+    left: 0px;
+    direction: ltr;
+}
+
+.flipped {
+    direction: rtl;
 }
 
 .right-title {

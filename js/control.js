@@ -1,3 +1,7 @@
+// Copyright (c) 2022, Lunnos
+// https://github.com/LunnosMp4/Dump1090-Web-Modern
+// License: MIT
+
 document.addEventListener('keydown', function(e) {
     if(e.key == '+') {
         document.querySelector('.leaflet-control-zoom-in').style.background = '#8b8b8b50';
