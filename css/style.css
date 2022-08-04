@@ -132,6 +132,16 @@ a.leaflet-control-zoom-out {
         width: inherit;
     }
 
+    .container h3 {
+        position: relative;
+        color: #f9fafbdd;
+        background-color: #10121b66;
+        width: 70%;
+        text-align: center;
+        margin-left: 15%;
+        top: 10px;
+    }
+
 .title {
     position: absolute;
     width: 250px;
@@ -210,6 +220,8 @@ a.leaflet-control-zoom-out {
     border-radius:  0 20px 0 0;
     top: 100px;
     left: 0px;   
+    font-size: 11px;
+    font-weight: 500;
 }
 
 .left-info {
@@ -217,12 +229,30 @@ a.leaflet-control-zoom-out {
     border-radius: 0 0 20px 0;
     top: 152px;
     left: 0px;
-    direction: ltr;
 }
 
-.flipped {
-    direction: rtl;
-}
+    .left-info .value {
+        display: -webkit-inline-box;
+        margin-bottom: -50px;
+    }
+
+    .left-info p {
+        direction: ltr;
+        font-size: 12px;
+    }
+
+    .left-info #title {
+        text-transform: uppercase;
+        font-size: 13px;
+    }
+
+    .left-info #sep {
+        margin-top: 30px;
+        margin-bottom: -49px;
+        height: 2px;
+        background-color: #10121b66;
+        width: 100%;
+    }
 
 .right-title {
     border-radius: 20px 0 0 0px;

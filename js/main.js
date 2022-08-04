@@ -101,8 +101,111 @@ let updateRightPanel = (plane) => {
 
 function LeftPanelInfo(plane) {
     let data = "";
-    data += '<img src=' + plane.photo + '>'+
-            '<p>' + plane.gs + '</p>';
+    if (plane.photo) {
+        data += '<img src=' + plane.photo + '>';
+    };
+
+    if (plane.longName) {
+        data += '<div class="value"><p id="title">Aircraft :</p>';
+        data += '<p id="value">' + plane.longName + '</p></div>';
+    }
+
+    if (plane.regid) {
+        data += '<div class="value"><p id="title">Registration :</p>';
+        data += '<p id="value">' + plane.regid + '</p></div>';
+    }
+
+    if (plane.operatorName) {
+        data += '<div class="value"><p id="title">Company :</p>';
+        data += '<p id="value">' + plane.operatorName + '</p></div>';
+    }
+
+    if (plane.constmaj) {
+        data += '<div class="value"><p id="title">Manufacturer  :</p>';
+        data += '<p id="value">' + plane.constmaj + '</p></div>';
+    }
+
+    data += '<div id="sep"></div><h3>Speed</h3>';
+
+    if (plane.ias) {
+        data += '<div class="value"><p id="title">Air Speed :</p>';
+        data += '<p id="value">' + plane.ias + ' knots</p></div>';
+    }
+
+    data += '<div class="value"><p id="title">Ground Speed :</p>';
+    data += '<p id="value">' + plane.gs + ' knots</p></div>';
+    
+    if (plane.mach) {
+        data += '<div class="value"><p id="title">Mach Speed :</p>';
+        data += '<p id="value">' + plane.mach + ' mach</p></div>';
+    }
+
+    if (plane.alt_baro || plane.alt_geom || plane.baro_rate) {
+        data += '<div id="sep"></div><h3>Altitude</h3>';
+    }
+
+    if (plane.alt_baro) {
+        data += '<div class="value"><p id="title">Calibrate Altitude :</p>';
+        data += '<p id="value">' + plane.alt_baro + ' ft</p></div>';
+    }
+    if (plane.alt_geom) {
+        data += '<div class="value"><p id="title">Ground Altitude :</p>';
+        data += '<p id="value">' + plane.alt_geom + ' ft</p></div>';
+    }
+    if (plane.baro_rate) {
+        data += '<div class="value"><p id="title">Vertical Speed :</p>';
+        data += '<p id="value">' + plane.baro_rate + ' ft/min</p></div>';
+    }
+
+    if (plane.track || plane.mag_heading || plane.true_heading) {
+        data += '<div id="sep"></div><h3>Movement</h3>';
+    }
+
+    if (plane.track) {
+        data += '<div class="value"><p id="title">Calibrate Track :</p>';
+        data += '<p id="value">' + plane.track + '°</p></div>';
+    }
+    if (plane.mag_heading) {
+        data += '<div class="value"><p id="title">Magnetic Heading :</p>';
+        data += '<p id="value">' + plane.mag_heading + '°</p></div>';
+    }
+    if (plane.true_heading) {
+        data += '<div class="value"><p id="title">True Heading :</p>';
+        data += '<p id="value">' + plane.true_heading + '°</p></div>';
+    }
+    if (plane.roll) {
+        data += '<div class="value"><p id="title">Roll Axis :</p>';
+        data += '<p id="value">' + plane.roll + '°</p></div>';
+    }
+    if (plane.lat && plane.lon) {
+        data += '<div class="value"><p id="title">Position :</p>';
+        data += '<p id="value">{ ' + plane.lat + '°N, ' + plane.lon + '°E }</p></div>';
+    }
+
+    if (plane.oat || plane.nav_qnh) {
+        data += '<div id="sep"></div><h3>Environement</h3>';
+    }
+
+    if (plane.oat) {
+        data += '<div class="value"><p id="title">Air Temperature :</p>';
+        data += '<p id="value">' + plane.oat + ' °C</p></div>';
+    }
+    if (plane.nav_qnh) {
+        data += '<div class="value"><p id="title">QNH :</p>';
+        data += '<p id="value">' + plane.nav_qnh + '</p></div>';
+    }
+
+    data += '<div id="sep"></div><h3>Other</h3>';
+
+    if (plane.squawk) {
+        data += '<div class="value"><p id="title">Squawk :</p>';
+        data += '<p id="value">' + plane.squawk + '</p></div></br>';
+    }
+
+    if (plane.hex) {
+        data += '<div class="value"><p id="title">ICAO :</p>';
+        data += '<p id="value">' + (plane.hex).toUpperCase() + '</p></div>';
+    }
 
     return data;
 }
@@ -120,8 +223,8 @@ document.addEventListener('click', function(e) {
 
         map.setView([plane.lat, plane.lon], 10);
 
-        PlaneInfo = '<div class="title left-title" id="panel-' + hex + '"><h2>'+ plane.flight +'</h2></div>' +
-                    '<div class="container flipped left-info">' + LeftPanelInfo(plane) + '</div>'
+        PlaneInfo = '<div class="title left-title" id="panel-' + hex + '"><h2> Flight ' + plane.flight +'</h2></div>' +
+                    '<div class="container left-info">' + LeftPanelInfo(plane) + '</div>'
 
         document.querySelector('#PlaneInfo').innerHTML = PlaneInfo;
     }
@@ -176,24 +279,74 @@ let updateMap = (database) => {
                 let storedPlane = activePlanes[newPlane.hex];
                 newPlane.firstSeen = storedPlane.firstSeen;
 
+                // All Data signification available here : https://github.com/Mictronics/readsb/blob/master/README-json.md
+
+                //Plane Position
                 if (!newPlane.lat || !newPlane.lon) {
                     newPlane.lat = storedPlane.lat;
                     newPlane.lon = storedPlane.lon;
                 }
+                if (!newPlane.roll) {
+                    newPlane.roll = storedPlane.roll;
+                }
                 if (!newPlane.track) {
                     newPlane.track = storedPlane.track;
                 }
+                if (!newPlane.mag_heading) {
+                    newPlane.mag_heading = storedPlane.mag_heading;
+                }
+                if (!newPlane.true_heading) {
+                    newPlane.true_heading = storedPlane.true_heading;
+                }
+
+                //Plane Temperature
+                if (!newPlane.oat) {
+                    newPlane.oat = storedPlane.oat;
+                }
+                if (!newPlane.tat) {
+                    newPlane.tat = storedPlane.tat;
+                }
+
+                //Plane Altitude
                 if (!newPlane.alt_baro) {
                     newPlane.alt_baro = storedPlane.alt_baro;
                 }
-                if (!newPlane.flight) {
-                    newPlane.flight = storedPlane.flight;
+                if (!newPlane.alt_geom) {
+                    newPlane.alt_geom = storedPlane.alt_geom;
                 }
+                if (!newPlane.baro_rate) {
+                    newPlane.baro_rate = storedPlane.baro_rate;
+                }
+                if (!newPlane.geom_rate) {
+                    newPlane.geom_rate = storedPlane.geom_rate;
+                }
+                if (!newPlane.nav_qnh) {
+                    newPlane.nav_qnh = storedPlane.nav_qnh;
+                }
+
+                //Plane Speed
                 if (!newPlane.gs) {
                     newPlane.gs = storedPlane.gs;
                 }
+                if (!newPlane.ias) {
+                    newPlane.ias = storedPlane.ias;
+                }
+                if (!newPlane.tas) {
+                    newPlane.tas = storedPlane.tas;
+                }
+                if (!newPlane.mach) {
+                    newPlane.mach = storedPlane.mach;
+                }
+
+                // Other
+                if (!newPlane.flight) {
+                    newPlane.flight = storedPlane.flight;
+                }
                 if (!newPlane.regid) {
                     newPlane.regid = storedPlane.regid;
+                }
+                if (!newPlane.squawk) {
+                    newPlane.squawk = storedPlane.squawk;
                 }
                 if (!newPlane.shortName) {
                     newPlane.shortName = storedPlane.shortName;
@@ -201,16 +354,18 @@ let updateMap = (database) => {
                 if (!newPlane.longName) {
                     newPlane.longName = storedPlane.longName;
                 }
-                if (!newPlane.operator) {
-                    newPlane.operator = storedPlane.operator;
+                if (!newPlane.operatorName) {
+                    newPlane.operatorName = storedPlane.operatorName;
+                }
+                if (!newPlane.constmaj) {
+                    newPlane.constmaj = storedPlane.constmaj;
                 }
                 if (!newPlane.photo) {
                     newPlane.photo = storedPlane.photo;
                 }
 
                 newPlane.path = storedPlane.path;
-            }
-            
+            } 
             if (newPlane.new) {
                 for (var i = 0; i < database.length; i++) {
                     if (database[i].icao) {
@@ -230,8 +385,11 @@ let updateMap = (database) => {
                             if (database[i].nameLong) {
                                 newPlane.longName = database[i].nameLong;
                             }
-                            if (database[i].operator) {
-                                newPlane.operator = database[i].operator;
+                            if (database[i].operatorName) {
+                                newPlane.operatorName = database[i].operatorName;
+                            }
+                            if (database[i].constmaj) {
+                                newPlane.constmaj = database[i].constmaj;
                             }
                         }
                     }
