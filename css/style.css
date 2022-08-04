@@ -22,6 +22,12 @@ body {
 
 ul {
     list-style-type: none;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #10121b66;
+    border-radius: 5px 0 0 5px;
 }
 
 ::selection {
@@ -122,6 +128,10 @@ a.leaflet-control-zoom-out {
         margin-left: 30px;
     }
 
+    .container img {
+        width: inherit;
+    }
+
 .title {
     position: absolute;
     width: 250px;
@@ -195,16 +205,6 @@ a.leaflet-control-zoom-out {
 }
 
 /************************************************/
-
-::-webkit-scrollbar {
-    width: 5px;
-}
-::-webkit-scrollbar-track {
-    background: #10121b66;
-}
-::-webkit-scrollbar-thumb {
-    background: #f9fafbae;
-}
 
 .left-title {
     border-radius:  0 20px 0 0;
