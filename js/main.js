@@ -84,16 +84,52 @@ let planeToplaneGlobal = (plane) => {
     return planeGlobal;
 }
 
-let updateRightPanel = (plane) => {
+//create a function to sort planes by a value in parameters (alt_baro, gs, ias)
+function sortPlanes(param) {
+    let sortedPlanes = Object.values(activePlanes).sort((a, b) => {
+        return b[param] - a[param];
+    });
+    return sortedPlanes;
+}
+
+
+document.querySelector('#more').addEventListener('click', () => {
+    if (document.querySelector('#more').classList.contains('active')) {
+        document.querySelector('#more').classList.remove('active');
+        document.querySelector('#more').innerHTML = 'See more (Not displayed on map)';
+    }
+    else {
+        document.querySelector('#more').classList.add('active');
+        document.querySelector('#more').innerHTML = 'See less';
+    }
+});
+
+
+let updateRightPanel = (allPlane) => {
     let numPlanes = 0;
     let planeList = '';
 
-    Object.values(activePlanes).forEach(plane => {
-        if (plane.type == 'adsb_icao') {
+    let sortedUnit = 'ft';
+    let sortedPlanes = sortPlanes('alt_baro');
+
+    for (let i = 0; i < sortedPlanes.length; i++) {
+        let plane = sortedPlanes[i]; 
+        if (plane.type == 'adsb_icao' && plane.alt_baro) {
             numPlanes++;
-            planeList += '<div id="link"></div><li id="list-' + plane.hex + '">' + plane.longName + ' - ' + plane.flight + '<br></li>';
+            planeList += '<div id="link"></div><li id="list-' + plane.hex + '">' + plane.longName + ' - ' + plane.flight + '<value>' + plane.alt_baro + ' ' + sortedUnit + '</value><br></li>';
         }
-    });
+    }
+
+    // check if there is a class nammed 'active'
+    if (document.querySelector('.active')) {
+        Object.values(activePlanes).forEach(plane => {
+            if (plane.lat === undefined || plane.lon === undefined) {
+                planeList += '<div id="link"></div><li id="list-' + plane.hex + '">' + plane.longName + ' - ' + plane.flight + '<br></li>';
+            }
+        });
+    }
+            
+
     document.querySelector('#TotNumbers').innerHTML = Object.keys(activePlanes).length;
     document.querySelector('#TotPos').innerHTML = numPlanes;
     document.querySelector('#PlaneList').innerHTML = planeList;
@@ -106,38 +142,38 @@ function LeftPanelInfo(plane) {
     };
 
     if (plane.longName) {
-        data += '<div class="value"><p id="title">Aircraft :</p>';
-        data += '<p id="value">' + plane.longName + '</p></div>';
+        data += '<value><p id="title">Aircraft :</p>';
+        data += '<p>' + plane.longName + '</p></value>';
     }
 
     if (plane.regid) {
-        data += '<div class="value"><p id="title">Registration :</p>';
-        data += '<p id="value">' + plane.regid + '</p></div>';
+        data += '<value><p id="title">Registration :</p>';
+        data += '<p>' + plane.regid + '</p></value>';
     }
 
     if (plane.operatorName) {
-        data += '<div class="value"><p id="title">Company :</p>';
-        data += '<p id="value">' + plane.operatorName + '</p></div>';
+        data += '<value><p id="title">Company :</p>';
+        data += '<p>' + plane.operatorName + '</p></value>';
     }
 
     if (plane.constmaj) {
-        data += '<div class="value"><p id="title">Manufacturer  :</p>';
-        data += '<p id="value">' + plane.constmaj + '</p></div>';
+        data += '<value><p id="title">Manufacturer  :</p>';
+        data += '<p>' + plane.constmaj + '</p></value>';
     }
 
     data += '<div id="sep"></div><h3>Speed</h3>';
 
     if (plane.ias) {
-        data += '<div class="value"><p id="title">Air Speed :</p>';
-        data += '<p id="value">' + plane.ias + ' knots</p></div>';
+        data += '<value><p id="title">Air Speed :</p>';
+        data += '<p>' + plane.ias + ' knots</p></value>';
     }
 
-    data += '<div class="value"><p id="title">Ground Speed :</p>';
-    data += '<p id="value">' + plane.gs + ' knots</p></div>';
+    data += '<value><p id="title">Ground Speed :</p>';
+    data += '<p>' + plane.gs + ' knots</p></value>';
     
     if (plane.mach) {
-        data += '<div class="value"><p id="title">Mach Speed :</p>';
-        data += '<p id="value">' + plane.mach + ' mach</p></div>';
+        data += '<value><p id="title">Mach Speed :</p>';
+        data += '<p>' + plane.mach + ' mach</p></value>';
     }
 
     if (plane.alt_baro || plane.alt_geom || plane.baro_rate) {
@@ -145,16 +181,16 @@ function LeftPanelInfo(plane) {
     }
 
     if (plane.alt_baro) {
-        data += '<div class="value"><p id="title">Calibrate Altitude :</p>';
-        data += '<p id="value">' + plane.alt_baro + ' ft</p></div>';
+        data += '<value><p id="title">Calibrate Altitude :</p>';
+        data += '<p>' + plane.alt_baro + ' ft</p></value>';
     }
     if (plane.alt_geom) {
-        data += '<div class="value"><p id="title">Ground Altitude :</p>';
-        data += '<p id="value">' + plane.alt_geom + ' ft</p></div>';
+        data += '<value><p id="title">Ground Altitude :</p>';
+        data += '<p>' + plane.alt_geom + ' ft</p></value>';
     }
     if (plane.baro_rate) {
-        data += '<div class="value"><p id="title">Vertical Speed :</p>';
-        data += '<p id="value">' + plane.baro_rate + ' ft/min</p></div>';
+        data += '<value><p id="title">Vertical Speed :</p>';
+        data += '<p>' + plane.baro_rate + ' ft/min</p></value>';
     }
 
     if (plane.track || plane.mag_heading || plane.true_heading) {
@@ -162,24 +198,24 @@ function LeftPanelInfo(plane) {
     }
 
     if (plane.track) {
-        data += '<div class="value"><p id="title">Calibrate Track :</p>';
-        data += '<p id="value">' + plane.track + '°</p></div>';
+        data += '<value><p id="title">Calibrate Track :</p>';
+        data += '<p>' + plane.track + '°</p></value>';
     }
     if (plane.mag_heading) {
-        data += '<div class="value"><p id="title">Magnetic Heading :</p>';
-        data += '<p id="value">' + plane.mag_heading + '°</p></div>';
+        data += '<value><p id="title">Magnetic Heading :</p>';
+        data += '<p>' + plane.mag_heading + '°</p></value>';
     }
     if (plane.true_heading) {
-        data += '<div class="value"><p id="title">True Heading :</p>';
-        data += '<p id="value">' + plane.true_heading + '°</p></div>';
+        data += '<value><p id="title">True Heading :</p>';
+        data += '<p>' + plane.true_heading + '°</p></value>';
     }
     if (plane.roll) {
-        data += '<div class="value"><p id="title">Roll Axis :</p>';
-        data += '<p id="value">' + plane.roll + '°</p></div>';
+        data += '<value><p id="title">Roll Axis :</p>';
+        data += '<p>' + plane.roll + '°</p></value>';
     }
     if (plane.lat && plane.lon) {
-        data += '<div class="value"><p id="title">Position :</p>';
-        data += '<p id="value">{ ' + plane.lat + '°N, ' + plane.lon + '°E }</p></div>';
+        data += '<value><p id="title">Position :</p>';
+        data += '<p>{ ' + plane.lat + '°N, ' + plane.lon + '°E }</p></value>';
     }
 
     if (plane.oat || plane.nav_qnh) {
@@ -187,24 +223,24 @@ function LeftPanelInfo(plane) {
     }
 
     if (plane.oat) {
-        data += '<div class="value"><p id="title">Air Temperature :</p>';
-        data += '<p id="value">' + plane.oat + ' °C</p></div>';
+        data += '<value><p id="title">Air Temperature :</p>';
+        data += '<p>' + plane.oat + ' °C</p></value>';
     }
     if (plane.nav_qnh) {
-        data += '<div class="value"><p id="title">QNH :</p>';
-        data += '<p id="value">' + plane.nav_qnh + '</p></div>';
+        data += '<value><p id="title">QNH :</p>';
+        data += '<p>' + plane.nav_qnh + '</p></value>';
     }
 
     data += '<div id="sep"></div><h3>Other</h3>';
 
     if (plane.squawk) {
-        data += '<div class="value"><p id="title">Squawk :</p>';
-        data += '<p id="value">' + plane.squawk + '</p></div></br>';
+        data += '<value><p id="title">Squawk :</p>';
+        data += '<p>' + plane.squawk + '</p></value></br>';
     }
 
     if (plane.hex) {
-        data += '<div class="value"><p id="title">ICAO :</p>';
-        data += '<p id="value">' + (plane.hex).toUpperCase() + '</p></div>';
+        data += '<value><p id="title">ICAO :</p>';
+        data += '<p>' + (plane.hex).toUpperCase() + '</p></value>';
     }
 
     return data;
@@ -218,10 +254,10 @@ document.addEventListener('click', function(e) {
         let plane = activePlanes[hex];
 
         if (!plane.lat && !plane.lon) {
-            alert("This plane is not displayed on the map, must be lost.");
+        } else {
+            map.setView([plane.lat, plane.lon], 10);
         }
 
-        map.setView([plane.lat, plane.lon], 10);
 
         PlaneInfo = '<div class="title left-title" id="panel-' + hex + '"><h2> Flight ' + plane.flight +'</h2></div>' +
                     '<div class="container left-info">' + LeftPanelInfo(plane) + '</div>'
@@ -244,8 +280,8 @@ let updateMap = (database) => {
             if (plane.lat && plane.lon) {       
                 addPlaneMarker(plane);
                 addPathMarker(plane);
-                updateRightPanel(plane);
             }
+            updateRightPanel(plane);
         });
     };
 

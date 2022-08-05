@@ -231,7 +231,7 @@ a.leaflet-control-zoom-out {
     left: 0px;
 }
 
-    .left-info .value {
+    .left-info value {
         display: -webkit-inline-box;
         margin-bottom: -50px;
     }
@@ -255,13 +255,31 @@ a.leaflet-control-zoom-out {
     }
 
 .right-title {
+    width: 325px;
     border-radius: 20px 0 0 0px;
     top: 100px;
-    left: calc(100% - 250px);   
+    left: calc(100% - 325px);   
 }
 
 .right-info {
+    width: 325px;
     top: 152px;
-    left: calc(100% - 250px);   
+    left: calc(100% - 325px);   
     border-radius: 0 0 0 20px;
 }
+
+    .right-info value {
+        position: absolute;
+        right: 5px;
+    }
+
+    .right-info #more {
+        cursor: pointer;
+        margin-left: 15px;
+        text-decoration: underline;
+    }
+
+    .right-info #more:hover {
+        color: #10121b66;
+        transition: 0.3s;
+    }
