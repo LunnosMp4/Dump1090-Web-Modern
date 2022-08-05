@@ -12,6 +12,13 @@ This website therefore aims to be very simple to set up and allow as many people
 
 I'm using script from https://github.com/Slord6/1090webclient to show airplane on the map.
 
+## Interface
+
+Here are some images of the interface, as you can see, you can have access to a lot of information such as altitude, speed, heading, etc... but also the image of the plane and its type, its operator or even its manufacturer !
+
+<img src="https://zupimages.net/up/22/31/p2qf.png" width="500"></img>
+<img src="https://zupimages.net/up/22/31/w2fw.png" width="500"></img>
+
 ## Errors
 
 There are errors that can occur in the operation of this service.
