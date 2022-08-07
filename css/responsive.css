@@ -1,0 +1,103 @@
+/*
+// Copyright (c) 2022, Lunnos
+// https://github.com/LunnosMp4/Dump1090-Web-Modern
+// License: MIT
+*/
+
+/************* Height ******************/
+
+@media screen and (max-height: 1200px) {
+    .right-info { 
+        top: calc(40vh - 100px);   
+    }
+    .right-title {
+        top: calc(40vh - 150px);
+    }
+    .left-info { 
+        top: calc(40vh - 100px);   
+    }
+    .left-title {
+        top: calc(40vh - 150px);
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .right-info { 
+        top: calc(40vh - 150px);   
+    }
+    .right-title {
+        top: calc(40vh - 200px);
+    }
+    .left-info { 
+        top: calc(40vh - 150px);   
+    }
+    .left-title {
+        top: calc(40vh - 200px);
+    }
+}
+
+
+/************* Width ******************/
+
+@media screen and (min-width: 1921px) {
+    .container {
+        width: 350px;
+        height: 700px;
+        font-size: 15px;
+    }
+    .title {
+        width: 350px;
+        height: 70px;
+        font-size: 18px;
+    }
+    .right-info { 
+        top: calc(40vh - 150px);   
+    }
+    .right-title {
+        top: calc(40vh - 200px);
+    }
+    .left-info { 
+        top: calc(40vh - 150px);   
+    }
+    .left-title {
+        top: calc(40vh - 200px);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    value {
+        display: none;
+    }
+    .right-info {
+        width: 250px;
+        left: calc(100% - 250px);
+    }
+    .right-title {
+        width: 250px;
+        left: calc(100% - 250px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .right-info {
+        display: none;
+    }
+    .right-title {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .left-info {
+        height: 250px;
+        width: 100%;
+        border-radius: 0px;
+        top: calc(100% - 250px);
+    }
+    .left-title {
+        height: 50px;
+        width: 100%;
+        border-radius: 0px;
+        top: calc(100% - 300px);
+    }
+}

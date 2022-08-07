@@ -218,7 +218,7 @@ a.leaflet-control-zoom-out {
 
 .left-title {
     border-radius:  0 20px 0 0;
-    top: 100px;
+    top: calc(40vh - 50px);
     left: 0px;   
     font-size: 11px;
     font-weight: 500;
@@ -227,7 +227,7 @@ a.leaflet-control-zoom-out {
 .left-info {
     position: absolute;
     border-radius: 0 0 20px 0;
-    top: 152px;
+    top: 40vh;
     left: 0px;
 }
 
@@ -257,13 +257,13 @@ a.leaflet-control-zoom-out {
 .right-title {
     width: 325px;
     border-radius: 20px 0 0 0px;
-    top: 100px;
+    top: calc(40vh - 50px);
     left: calc(100% - 325px);   
 }
 
 .right-info {
     width: 325px;
-    top: 152px;
+    top: 40vh;
     left: calc(100% - 325px);   
     border-radius: 0 0 0 20px;
 }

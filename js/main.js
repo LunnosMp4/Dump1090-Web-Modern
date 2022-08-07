@@ -143,37 +143,37 @@ function LeftPanelInfo(plane) {
 
     if (plane.longName) {
         data += '<value><p id="title">Aircraft :</p>';
-        data += '<p>' + plane.longName + '</p></value>';
+        data += '<p>' + plane.longName + '</p></value></br>';
     }
 
     if (plane.regid) {
         data += '<value><p id="title">Registration :</p>';
-        data += '<p>' + plane.regid + '</p></value>';
+        data += '<p>' + plane.regid + '</p></value></br>';
     }
 
     if (plane.operatorName) {
         data += '<value><p id="title">Company :</p>';
-        data += '<p>' + plane.operatorName + '</p></value>';
+        data += '<p>' + plane.operatorName + '</p></value></br>';
     }
 
     if (plane.constmaj) {
         data += '<value><p id="title">Manufacturer  :</p>';
-        data += '<p>' + plane.constmaj + '</p></value>';
+        data += '<p>' + plane.constmaj + '</p></value></br>';
     }
 
     data += '<div id="sep"></div><h3>Speed</h3>';
 
     if (plane.ias) {
         data += '<value><p id="title">Air Speed :</p>';
-        data += '<p>' + plane.ias + ' knots</p></value>';
+        data += '<p>' + plane.ias + ' knots</p></value></br>';
     }
 
     data += '<value><p id="title">Ground Speed :</p>';
-    data += '<p>' + plane.gs + ' knots</p></value>';
+    data += '<p>' + plane.gs + ' knots</p></value></br>';
     
     if (plane.mach) {
         data += '<value><p id="title">Mach Speed :</p>';
-        data += '<p>' + plane.mach + ' mach</p></value>';
+        data += '<p>' + plane.mach + ' mach</p></value></br>';
     }
 
     if (plane.alt_baro || plane.alt_geom || plane.baro_rate) {
@@ -182,15 +182,15 @@ function LeftPanelInfo(plane) {
 
     if (plane.alt_baro) {
         data += '<value><p id="title">Calibrate Altitude :</p>';
-        data += '<p>' + plane.alt_baro + ' ft</p></value>';
+        data += '<p>' + plane.alt_baro + ' ft</p></value></br>';
     }
     if (plane.alt_geom) {
         data += '<value><p id="title">Ground Altitude :</p>';
-        data += '<p>' + plane.alt_geom + ' ft</p></value>';
+        data += '<p>' + plane.alt_geom + ' ft</p></value></br>';
     }
     if (plane.baro_rate) {
         data += '<value><p id="title">Vertical Speed :</p>';
-        data += '<p>' + plane.baro_rate + ' ft/min</p></value>';
+        data += '<p>' + plane.baro_rate + ' ft/min</p></value></br>';
     }
 
     if (plane.track || plane.mag_heading || plane.true_heading) {
@@ -199,23 +199,23 @@ function LeftPanelInfo(plane) {
 
     if (plane.track) {
         data += '<value><p id="title">Calibrate Track :</p>';
-        data += '<p>' + plane.track + '°</p></value>';
+        data += '<p>' + plane.track + '°</p></value></br>';
     }
     if (plane.mag_heading) {
         data += '<value><p id="title">Magnetic Heading :</p>';
-        data += '<p>' + plane.mag_heading + '°</p></value>';
+        data += '<p>' + plane.mag_heading + '°</p></value></br>';
     }
     if (plane.true_heading) {
         data += '<value><p id="title">True Heading :</p>';
-        data += '<p>' + plane.true_heading + '°</p></value>';
+        data += '<p>' + plane.true_heading + '°</p></value></br>';
     }
     if (plane.roll) {
         data += '<value><p id="title">Roll Axis :</p>';
-        data += '<p>' + plane.roll + '°</p></value>';
+        data += '<p>' + plane.roll + '°</p></value></br>';
     }
     if (plane.lat && plane.lon) {
         data += '<value><p id="title">Position :</p>';
-        data += '<p>{ ' + plane.lat + '°N, ' + plane.lon + '°E }</p></value>';
+        data += '<p>{ ' + plane.lat + '°N, ' + plane.lon + '°E }</p></value></br>';
     }
 
     if (plane.oat || plane.nav_qnh) {
@@ -224,11 +224,11 @@ function LeftPanelInfo(plane) {
 
     if (plane.oat) {
         data += '<value><p id="title">Air Temperature :</p>';
-        data += '<p>' + plane.oat + ' °C</p></value>';
+        data += '<p>' + plane.oat + ' °C</p></value></br>';
     }
     if (plane.nav_qnh) {
         data += '<value><p id="title">QNH :</p>';
-        data += '<p>' + plane.nav_qnh + '</p></value>';
+        data += '<p>' + plane.nav_qnh + '</p></value></br>';
     }
 
     data += '<div id="sep"></div><h3>Other</h3>';
@@ -240,7 +240,7 @@ function LeftPanelInfo(plane) {
 
     if (plane.hex) {
         data += '<value><p id="title">ICAO :</p>';
-        data += '<p>' + (plane.hex).toUpperCase() + '</p></value>';
+        data += '<p>' + (plane.hex).toUpperCase() + '</p></value></br>';
     }
 
     return data;
