@@ -42,7 +42,7 @@ let removePlane = (plane) => {
 // Get Data from server
 let getNewData = (cb) => {
     var xhr = new XMLHttpRequest();
-    var url = "./aircraft.json";
+    var url = "./aircraft.json"; // replace with the url to aircraft.json file from the server hosting : (http://{Your Raspberry IP}/tar1090/data/aircraft.json)
     xhr.open("GET", url);
     xhr.send();
     xhr.onreadystatechange=(res) => {
@@ -53,7 +53,7 @@ let getNewData = (cb) => {
 // Get Data from the Database
 function loadDatabase() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "database/aircraft-database.min.json", false);
+    xhr.open("GET", "database/aircraftRegistration.json", false);
     xhr.send();
     var json = xhr.responseText;
     database = JSON.parse(json);

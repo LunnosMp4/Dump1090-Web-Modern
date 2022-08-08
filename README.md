@@ -1,4 +1,4 @@
-# dump1090-Web-Modern
+# Dump1090-Web-Modern
 
 The goal of this project is to create a clean and modern interface for dump1090. The current one actually dates from more than 10 years ago.
 
@@ -49,9 +49,10 @@ If it does not work, you can try to install the following extension on your brow
 
 You can use the database provided in the folder `databate` of the repository.
 This database lists any information on aircraft from their ICAO code (Hex) (register, type, model, manufacturer ...) and date of 2018.
-Personally I use another update database daily that I connected to my own API, but I cannot share it publicly, I let you do research on this last!
 
-Sun, J. (2017). World Aircraft Database.
-Retrieved from http://junzis.com/adb/
+
+**Please note: if you want a more recent and much more supplied database (last update : 06/08/22) you can download it from the following link (download hosting on mega.nz) and replace the existing one in the folder `database`. This new database is obviously compatible and I strongly advise you to install it !**
+
+- [Nouvelle Database](https://mega.nz/file/keZHQYwT#ZizpRH-k9WsoMk4b7Rgoj2czCrp5PSdVF0JyGr3e42k)
 
 **Do not hesitate to put a star if you like the project !**
