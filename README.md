@@ -63,6 +63,6 @@ This database lists any information on aircraft from their ICAO code (Hex) (regi
 
 **Please note: if you want a more recent and much more supplied database (last update : 06/08/22) you can download it from the following link (download hosting on mega.nz) and replace the existing one in the folder `database`. This new database is obviously compatible and I strongly advise you to install it !**
 
-- [Nouvelle Database](https://mega.nz/file/keZHQYwT#ZizpRH-k9WsoMk4b7Rgoj2czCrp5PSdVF0JyGr3e42k)
+- [Recent Database](https://mega.nz/file/keZHQYwT#ZizpRH-k9WsoMk4b7Rgoj2czCrp5PSdVF0JyGr3e42k)
 
 **Do not hesitate to put a star if you like the project !**
