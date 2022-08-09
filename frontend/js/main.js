@@ -53,7 +53,7 @@ let getNewData = (cb) => {
 // Get Data from the Database
 function loadDatabase() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "database/aircraftRegistration.json", false);
+    xhr.open("GET", "database/aircraftRegistration.json", false); // database file
     xhr.send();
     var json = xhr.responseText;
     database = JSON.parse(json);
