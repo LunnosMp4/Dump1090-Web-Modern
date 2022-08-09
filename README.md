@@ -20,7 +20,7 @@ These two files are independent of each other. **If you only want the web part, 
 This allows you to create daily backups of the database. So if you want to use it you can get a daily relationship with all the planes detected by your receiver.
 It is also possible to link this part with Discord in order to receive the reports directly on Discord.
 
-This part use **node js**. See [Backend Readme](https://github.com/LunnosMp4/Dump1090-Web-Modern/backend/#readme) for more informations.
+This part use **node js**. See [Backend Readme](https://github.com/LunnosMp4/Dump1090-Web-Modern/tree/master/backend#readme) for more informations.
 
 ## Interface
 
