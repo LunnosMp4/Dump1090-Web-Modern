@@ -7,14 +7,14 @@ You can also do the same thing to change the location of the database of the dat
 
 ## Hosting
 
-Je vous conseille d'héberger ce serveur sur un serveur Raspberry Pi a l'aide d'Apache.
+I advise you to host this server on a Raspberry Pi server using Apache.
     
 ```bash
     sudo apt-get update
     sudo apt-get install apache2
     sudo service apache2 restart
 ```
-Vous pouvez ensuite mettre le contenu du dossier `frontend` dans le dossier `/var/www/html/`
-Vous pourrez ensuite acceder au site via le lien suivant :
+You can then put the content of the folder `frontend` in the folder `/var/www/html/`
+You can then access the site via the following link:
 
 *http://{Your Raspberry IP}/index.html*

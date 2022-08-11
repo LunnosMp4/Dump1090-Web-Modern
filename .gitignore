@@ -2,3 +2,6 @@ data.json
 frontend/aircraft.json
 frontend/database/database.json
 frontend/database/aircraft-database.json
+backend/data/
+backend/node_modules/
+backend/aircraft.json
