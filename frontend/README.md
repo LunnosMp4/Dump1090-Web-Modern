@@ -1,9 +1,9 @@
 # Frontend
 
-If you want to change the place where the `aircraft.json` file is located (the file that contains the information on the planes), you can modify it in the file` js/main.js` to the ** line 45**.
+If you want to change the place where the `aircraft.json` file is located (the file that contains the information on the planes), you can modify it in the file` js/main.js` to the **line 45**.
 The basic location is `http://{Your Raspberry IP}/Tar1090/Data/Aircraft.json`
 
-You can also do the same thing to change the location of the database of the database in the same file at ** line 56 **.
+You can also do the same thing to change the location of the database of the database in the same file at **line 56**.
 
 ## Hosting
 
