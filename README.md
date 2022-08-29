@@ -39,7 +39,7 @@ This is surely due to the following error:
 Access-Control-Allow-Origin' header is present on the requested resource.
 ```
 
-In order to adjust this error you must go to the repository [tar1090] (https://github.com/wiedehopf/tar1090) and modify the file `88-tar1090.conf` and add the following line:
+In order to adjust this error you must go to the repository [tar1090](https://github.com/wiedehopf/tar1090) and modify the file `88-tar1090.conf` and add the following line:
 
 ```conf
 $HTTP["url"] =~ "^/INSTANCE/data/aircraft\.json$" {
